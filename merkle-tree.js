@@ -25,6 +25,11 @@ class MerkleTree {
             newLevel.push(this.concatHashes(leaves[i], leaves[i + 1]));
         }
 
+        // If the original length is not even, add the last item
+        if (evenLength !== leaves.length) {
+            newLevel.push(leaves[leaves.length - 1]);
+        }
+
         return newLevel;
     }
 
