@@ -11,10 +11,9 @@ class MerkleTree {
     }
 
     getRoot() {
-        // (number)=>string
-        // 1 parameters:
-        //- an index which we want to proof
+        // ()=>string
         // return:
+        // final hash of merkle root
         let leaves = this.leaves;
         while (leaves.length > 1) {
             leaves = this.getNextLevel(leaves);
@@ -77,6 +76,9 @@ class MerkleTree {
     }
 
     getNextLevel(leaves) {
+        // (string[])=>string[]
+        // return:
+        // the upper next hashed level
         let newLevel = [];
         // Add even length items
         let evenLength = (leaves.length % 2 == 0) ? leaves.length : leaves.length - 1;
@@ -95,5 +97,6 @@ class MerkleTree {
 
 }
 
+// const hashTree = new MerkleTree(leaves.map(sha256), concatHash);
 
 module.exports = MerkleTree;
